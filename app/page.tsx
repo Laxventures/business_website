@@ -30,7 +30,7 @@ export default function Home() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-blue-900 hover:bg-blue-800 text-white border-blue-900 px-8 py-4 text-lg font-semibold rounded-lg transition-colors shadow-lg"
+              className="bg-slate-900 hover:bg-slate-800 text-white border-slate-900 px-8 py-4 text-lg font-semibold rounded-lg transition-colors shadow-lg"
             >
               Build Custom Itinerary
             </Button>
@@ -42,7 +42,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-blue-900 mb-6">Who We Are</h2>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">Who We Are</h2>
               <p className="text-lg text-gray-700 leading-relaxed">
                 LaxVentures is your smart travel assistant - blending expert-curated trips with AI-powered
                 personalization. Whether you're a solo adventurer, a romantic couple, or a family of five, we craft
@@ -60,23 +60,23 @@ export default function Home() {
 
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-blue-900 mb-16">What Type of Traveller Are You?</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-16">What Type of Traveller Are You?</h2>
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-6xl mb-4">🥾</div>
-              <h3 className="text-xl font-semibold text-blue-900">The Adventurer</h3>
+              <h3 className="text-xl font-semibold text-slate-900">The Adventurer</h3>
             </div>
             <div className="text-center">
               <div className="text-6xl mb-4">🏛️</div>
-              <h3 className="text-xl font-semibold text-blue-900">The Cultural Explorer</h3>
+              <h3 className="text-xl font-semibold text-slate-900">The Cultural Explorer</h3>
             </div>
             <div className="text-center">
               <div className="text-6xl mb-4">🌲</div>
-              <h3 className="text-xl font-semibold text-blue-900">Nature Seeker</h3>
+              <h3 className="text-xl font-semibold text-slate-900">Nature Seeker</h3>
             </div>
             <div className="text-center">
               <div className="text-6xl mb-4">👨‍👩‍👧‍👦</div>
-              <h3 className="text-xl font-semibold text-blue-900">Family Planner</h3>
+              <h3 className="text-xl font-semibold text-slate-900">Family Planner</h3>
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function Home() {
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto space-y-16">
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-blue-900 mb-6">Discover Your Travel Personality</h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Discover Your Travel Personality</h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
               Take our quiz to find out what type of traveler you are and get personalized travel recommendations
               tailored just for you.
@@ -96,7 +96,7 @@ export default function Home() {
           </div>
 
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-blue-900 mb-6">Create Your Perfect Itinerary</h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Create Your Perfect Itinerary</h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
               Use our customizable itinerary builder to plan your next adventure, from destinations and activities to
               accommodations.
@@ -107,7 +107,7 @@ export default function Home() {
           </div>
 
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-blue-900 mb-6">Get Inspired by My Itineraries</h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Get Inspired by My Itineraries</h2>
             <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
               Browse through detailed itineraries from my past travels and find recommendations to inspire your own
               journey
@@ -121,7 +121,7 @@ export default function Home() {
 
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-blue-900 text-center mb-12">Real Stories. Real Places.</h2>
+          <h2 className="text-4xl font-bold text-slate-900 text-center mb-12">Real Stories. Real Places.</h2>
           <div className="grid md:grid-cols-4 gap-6">
             <div className="relative h-64 rounded-lg overflow-hidden">
               <Image src="/eiffel-tower-paris.png" alt="Paris" fill className="object-cover" />
@@ -143,16 +143,16 @@ export default function Home() {
 
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-blue-900 text-center mb-4">Travel Smart: Latest Blogs & Tips</h2>
+          <h2 className="text-4xl font-bold text-slate-900 text-center mb-4">Travel Smart: Latest Blogs & Tips</h2>
           <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-blue-900 mb-4">Read Travel Tips & Guides</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Read Travel Tips & Guides</h3>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
               <div key={i} className="space-y-4">
-                <h4 className="text-xl font-semibold text-blue-900">Etiam scelerisque tortor at lectus</h4>
+                <h4 className="text-xl font-semibold text-slate-900">Etiam scelerisque tortor at lectus</h4>
                 <p className="text-gray-600">Cras vulputate nisl mauris, non suscipit ligula commodo quis.</p>
-                <Button variant="link" className="text-blue-900 p-0 h-auto font-semibold">
+                <Button variant="link" className="text-slate-900 p-0 h-auto font-semibold">
                   Read More
                 </Button>
               </div>
@@ -163,20 +163,20 @@ export default function Home() {
 
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-blue-900 text-center mb-12">Build Your Own Itinerary</h2>
+          <h2 className="text-4xl font-bold text-slate-900 text-center mb-12">Build Your Own Itinerary</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <div className="text-green-600 text-xl">✓</div>
-                <span className="text-xl font-semibold text-blue-900">Quick & easy</span>
+                <span className="text-xl font-semibold text-slate-900">Quick & easy</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="text-green-600 text-xl">👤</div>
-                <span className="text-xl font-semibold text-blue-900">Personalized plans</span>
+                <span className="text-xl font-semibold text-slate-900">Personalized plans</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="text-green-600 text-xl">📄</div>
-                <span className="text-xl font-semibold text-blue-900">Export to PDF</span>
+                <span className="text-xl font-semibold text-slate-900">Export to PDF</span>
               </div>
               <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg mt-8">
                 Start Building
@@ -209,7 +209,7 @@ export default function Home() {
 
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-blue-900 mb-16">Testimonials</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-16">Testimonials</h2>
           <div className="space-y-12">
             <div>
               <div className="text-6xl text-gray-300 mb-4">"</div>
@@ -229,9 +229,9 @@ export default function Home() {
 
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-blue-900 mb-4">Have Questions</h2>
-          <h2 className="text-4xl font-bold text-blue-900 mb-8">or Need Help?</h2>
-          <Button className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-4 text-lg font-semibold rounded-lg">
+          <h2 className="text-4xl font-bold text-slate-900 mb-4">Have Questions</h2>
+          <h2 className="text-4xl font-bold text-slate-900 mb-8">or Need Help?</h2>
+          <Button className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 text-lg font-semibold rounded-lg">
             Contact Us
           </Button>
         </div>
