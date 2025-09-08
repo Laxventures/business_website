@@ -23,10 +23,11 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
+              asChild
               size="lg"
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors shadow-lg"
             >
-              Build Custom Itinerary
+              <Link href="/custom-itinerary">Build Custom Itinerary</Link>
             </Button>
             {/* <Button
               size="lg"
@@ -159,8 +160,11 @@ export default function Home() {
                 <div className="text-green-600 text-xl">📄</div>
                 <span className="text-xl font-semibold text-slate-900">Export to PDF</span>
               </div>
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg mt-8">
-                Start Building
+              <Button
+                asChild
+                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg mt-8"
+              >
+                <Link href="/custom-itinerary">Start Building</Link>
               </Button>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-lg">
