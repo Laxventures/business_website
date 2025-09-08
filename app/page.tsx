@@ -25,15 +25,15 @@ export default function Home() {
               size="lg"
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors shadow-lg"
             >
-              Take Personality Quiz
+              Build Custom Itinerary
             </Button>
-            <Button
+            {/* <Button
               size="lg"
               variant="outline"
               className="bg-slate-900 hover:bg-slate-800 text-white border-slate-900 px-8 py-4 text-lg font-semibold rounded-lg transition-colors shadow-lg"
             >
               Build Custom Itinerary
-            </Button>
+            </Button> */}
           </div>
         </div>
       </section>
@@ -58,7 +58,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-gray-50">
+      {/* <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-16">What Type of Traveller Are You?</h2>
           <div className="grid md:grid-cols-4 gap-8">
@@ -80,9 +80,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="py-20 px-6 bg-white">
+      {/* <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto space-y-16">
           <div className="text-center">
             <h2 className="text-4xl font-bold text-slate-900 mb-6">Discover Your Travel Personality</h2>
@@ -117,7 +117,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -137,26 +137,6 @@ export default function Home() {
               <Image src="/tower-bridge-london-uk.jpg" alt="UK" fill className="object-cover" />
               <div className="absolute bottom-4 left-4 text-white font-bold text-xl">UK</div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-slate-900 text-center mb-4">Travel Smart: Latest Blogs & Tips</h2>
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Read Travel Tips & Guides</h3>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="space-y-4">
-                <h4 className="text-xl font-semibold text-slate-900">Etiam scelerisque tortor at lectus</h4>
-                <p className="text-gray-600">Cras vulputate nisl mauris, non suscipit ligula commodo quis.</p>
-                <Button variant="link" className="text-slate-900 p-0 h-auto font-semibold">
-                  Read More
-                </Button>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -208,6 +188,26 @@ export default function Home() {
       </section>
 
       <section className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-slate-900 text-center mb-4">Travel Smart: Latest Blogs & Tips</h2>
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Read Travel Tips & Guides</h3>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="space-y-4">
+                <h4 className="text-xl font-semibold text-slate-900">Etiam scelerisque tortor at lectus</h4>
+                <p className="text-gray-600">Cras vulputate nisl mauris, non suscipit ligula commodo quis.</p>
+                <Button variant="link" className="text-slate-900 p-0 h-auto font-semibold">
+                  Read More
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-16">Testimonials</h2>
           <div className="space-y-12">
@@ -231,7 +231,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-4">Have Questions</h2>
           <h2 className="text-4xl font-bold text-slate-900 mb-8">or Need Help?</h2>
-          <Button className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 text-lg font-semibold rounded-lg">
+          <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg mt-8">
             Contact Us
           </Button>
         </div>

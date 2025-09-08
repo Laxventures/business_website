@@ -23,7 +23,7 @@ export default function Header() {
           <Link href="/contact" className="hover:text-orange-300 transition-colors">
             Contact
           </Link>
-          <button className="hover:text-orange-300 transition-colors">🔍</button>
+          {/* <button className="hover:text-orange-300 transition-colors">🔍</button> */}
         </nav>
       </div>
     </header>

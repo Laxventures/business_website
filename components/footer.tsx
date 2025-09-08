@@ -8,14 +8,14 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <div className="space-y-2">
-              <Link href="/personality-quiz" className="block hover:text-orange-300 transition-colors">
+              {/* <Link href="/personality-quiz" className="block hover:text-orange-300 transition-colors">
                 Personality Quiz
-              </Link>
+              </Link> */}
               <Link href="/itineraries" className="block hover:text-orange-300 transition-colors">
-                My Itineraries
+                Itineraries
               </Link>
               <Link href="/articles" className="block hover:text-orange-300 transition-colors">
-                Articles
+                Blogs
               </Link>
             </div>
           </div>
@@ -52,15 +52,15 @@ export default function Footer() {
 
           <div>
             <div className="text-right">
-              <p className="mb-2">© 2024 LaxVentures.</p>
+              <p className="mb-2">© 2025 LaxVentures.</p>
               <p className="mb-4">All rights reserved.</p>
-              <p className="text-sm">GSTIN: 26ABCDE1234F1Z3</p>
+              <p className="text-sm">GSTIN: 33ASNPL7535J1ZC</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-slate-800 pt-4 text-center">
-          <p>© 2024 LaxVentures. All rights reserved.</p>
+          <p>© 2025 LaxVentures. All rights reserved.</p>
         </div>
       </div>
     </footer>
