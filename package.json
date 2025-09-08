@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "@remix-run/react": "latest",
@@ -16,39 +16,24 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "geist": "latest",
-    "jiti": "latest",
-    "less": "latest",
-    "lightningcss": "latest",
     "lucide-react": "^0.454.0",
     "next": "15.2.4",
     "react": "^19",
     "react-dom": "^19",
-    "sass": "latest",
-    "sass-embedded": "latest",
-    "stylus": "latest",
-    "sugarss": "latest",
     "svelte": "latest",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "terser": "latest",
-    "tsx": "latest",
     "vue": "latest",
-    "vue-router": "latest",
-    "yaml": "latest"
+    "vue-router": "latest"
   },
   "devDependencies": {
-    "@eslint/js": "^9.33.0",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.33.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
+    "eslint-config-next": "15.5.2",
     "postcss": "^8.5",
-    "tailwindcss": "4.1.13",
-    "typescript": "^5",
-    "vite": "^7.1.2"
+    "tailwindcss": "^4.1.9",
+    "typescript": "^5"
   }
 }
