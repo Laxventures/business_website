@@ -31,7 +31,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-4">Resources</h3>
             <div className="space-y-2">
-              <Link href="/destinations" className="block hover:text-orange-300 transition-colors">
+              <Link href="/itineraries" className="block hover:text-orange-300 transition-colors">
                 Destinations
               </Link>
               <Link href="/travel-blogs" className="block hover:text-orange-300 transition-colors">
