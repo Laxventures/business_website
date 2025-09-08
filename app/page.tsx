@@ -132,7 +132,10 @@ export default function Home() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl drop-shadow-lg">PARIS</div>
+              <div className="absolute inset-0 bg-black/70" />
+              <div className="absolute bottom-4 left-4 text-white font-bold text-xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_100%)]">
+                PARIS
+              </div>
             </Link>
             <Link href="/itineraries/vietnam" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
               <Image
@@ -141,7 +144,10 @@ export default function Home() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl drop-shadow-lg">VIETNAM</div>
+              <div className="absolute inset-0 bg-black/70" />
+              <div className="absolute bottom-4 left-4 text-white font-bold text-xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_100%)]">
+                VIETNAM
+              </div>
             </Link>
             <Link href="/itineraries/tibet" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
               <Image
@@ -150,7 +156,10 @@ export default function Home() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl drop-shadow-lg">TIBET</div>
+              <div className="absolute inset-0 bg-black/70" />
+              <div className="absolute bottom-4 left-4 text-white font-bold text-xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_100%)]">
+                TIBET
+              </div>
             </Link>
             <Link href="/itineraries/london" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
               <Image
@@ -159,7 +168,10 @@ export default function Home() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl drop-shadow-lg">UK</div>
+              <div className="absolute inset-0 bg-black/70" />
+              <div className="absolute bottom-4 left-4 text-white font-bold text-xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_100%)]">
+                UK
+              </div>
             </Link>
           </div>
         </div>
