@@ -1,8 +1,11 @@
+import Link from "next/link"
+
 export default function ItinerariesPage() {
   const itineraries = [
     {
       id: 1,
       title: "Venice",
+      slug: "venice", // Added slug for routing
       description: "Take a scenic gondola ride through the canals",
       image: "/destinations/venice-gondola.jpg",
       imageQuery: "Venice gondola ride through romantic canals with historic buildings",
@@ -10,6 +13,7 @@ export default function ItinerariesPage() {
     {
       id: 2,
       title: "Mount Fuji",
+      slug: "mount-fuji", // Added slug for routing
       description: "Visit in spring for stunning cherry blossoms",
       image: "/destinations/mount-fuji.jpg",
       imageQuery: "Mount Fuji with cherry blossoms and traditional Japanese pagoda in spring",
@@ -17,6 +21,7 @@ export default function ItinerariesPage() {
     {
       id: 3,
       title: "Kyoto",
+      slug: "kyoto", // Added slug for routing
       description: "Explore historic temples and the Gion district",
       image: "/destinations/kyoto-temples.jpg",
       imageQuery: "Traditional Kyoto street with wooden buildings and pagoda temple",
@@ -24,6 +29,7 @@ export default function ItinerariesPage() {
     {
       id: 4,
       title: "Cape Town",
+      slug: "cape-town", // Added slug for routing
       description: "Take in the views from atop Table Mountain",
       image: "/destinations/cape-town.jpg",
       imageQuery: "Aerial view of Cape Town city with Table Mountain and ocean coastline",
@@ -55,7 +61,9 @@ export default function ItinerariesPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {itineraries.map((itinerary) => (
-              <div key={itinerary.id} className="group cursor-pointer">
+              <Link key={itinerary.id} href={`/itineraries/${itinerary.slug}`} className="group cursor-pointer">
+                {" "}
+                {/* Added Link wrapper for navigation */}
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                   <div className="aspect-video relative overflow-hidden">
                     <img
@@ -69,7 +77,7 @@ export default function ItinerariesPage() {
                     <p className="text-gray-600 text-lg leading-relaxed">{itinerary.description}</p>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

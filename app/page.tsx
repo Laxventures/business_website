@@ -125,20 +125,42 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-slate-900 text-center mb-12">Real Stories. Real Places.</h2>
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="relative h-64 rounded-lg overflow-hidden">
-              <Image src="/eiffel-tower-paris.png" alt="Paris" fill className="object-cover" />
-            </div>
-            <div className="relative h-64 rounded-lg overflow-hidden">
-              <Image src="/ha-long-bay.png" alt="Vietnam" fill className="object-cover" />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl">VIETNAM</div>
-            </div>
-            <div className="relative h-64 rounded-lg overflow-hidden">
-              <Image src="/mountain-monastery-tibet.jpg" alt="Mountains" fill className="object-cover" />
-            </div>
-            <div className="relative h-64 rounded-lg overflow-hidden">
-              <Image src="/tower-bridge-london-uk.jpg" alt="UK" fill className="object-cover" />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl">UK</div>
-            </div>
+            <Link href="/itineraries/paris" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
+              <Image
+                src="/eiffel-tower-paris.png"
+                alt="Paris"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-4 left-4 text-white font-bold text-xl drop-shadow-lg">PARIS</div>
+            </Link>
+            <Link href="/itineraries/vietnam" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
+              <Image
+                src="/ha-long-bay.png"
+                alt="Vietnam"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-4 left-4 text-white font-bold text-xl drop-shadow-lg">VIETNAM</div>
+            </Link>
+            <Link href="/itineraries/tibet" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
+              <Image
+                src="/mountain-monastery-tibet.jpg"
+                alt="Tibet"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-4 left-4 text-white font-bold text-xl drop-shadow-lg">TIBET</div>
+            </Link>
+            <Link href="/itineraries/london" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
+              <Image
+                src="/tower-bridge-london-uk.jpg"
+                alt="UK"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-4 left-4 text-white font-bold text-xl drop-shadow-lg">UK</div>
+            </Link>
           </div>
         </div>
       </section>
