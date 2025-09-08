@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Mail, Phone } from "lucide-react"
 
 export default function Footer() {
@@ -7,7 +8,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-semibold mb-4">LaxVentures</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <Image src="/laxventures-logo.png" alt="LaxVentures Logo" width={40} height={40} className="rounded-lg" />
+              <h3 className="text-xl font-semibold">LaxVentures</h3>
+            </div>
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-orange-400" />
@@ -48,20 +52,20 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
             <div className="flex gap-4">
-              <a href="#" className="text-2xl hover:text-orange-300 transition-colors" aria-label="Instagram">
-                📷
+              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Instagram">
+                <Image src="/icons/instagram.jpg" alt="Instagram" width={24} height={24} />
               </a>
-              <a href="#" className="text-2xl hover:text-orange-300 transition-colors" aria-label="X (Twitter)">
-                ❌
+              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="X (Twitter)">
+                <Image src="/icons/x-twitter.jpg" alt="X (Twitter)" width={24} height={24} />
               </a>
-              <a href="#" className="text-2xl hover:text-orange-300 transition-colors" aria-label="Facebook">
-                📘
+              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Facebook">
+                <Image src="/icons/facebook.jpg" alt="Facebook" width={24} height={24} />
               </a>
-              <a href="#" className="text-2xl hover:text-orange-300 transition-colors" aria-label="YouTube">
-                📺
+              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="YouTube">
+                <Image src="/icons/youtube.jpg" alt="YouTube" width={24} height={24} />
               </a>
-              <a href="#" className="text-2xl hover:text-orange-300 transition-colors" aria-label="Threads">
-                🧵
+              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Threads">
+                <Image src="/icons/threads.jpg" alt="Threads" width={24} height={24} />
               </a>
             </div>
           </div>
