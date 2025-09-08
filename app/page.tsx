@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -231,8 +232,11 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-4">Have Questions</h2>
           <h2 className="text-4xl font-bold text-slate-900 mb-8">or Need Help?</h2>
-          <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg mt-8">
-            Contact Us
+          <Button
+            asChild
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg mt-8"
+          >
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
       </section>
