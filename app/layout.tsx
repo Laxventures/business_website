@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
-import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
@@ -27,7 +26,6 @@ export default function RootLayout({
           <Suspense fallback={null}>{children}</Suspense>
         </main>
         <Footer />
-        <Analytics />
       </body>
     </html>
   )
