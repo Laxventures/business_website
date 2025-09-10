@@ -72,8 +72,9 @@ export default function TermsConditionsPage() {
                 We reserve the right to update these terms. Continued use implies agreement to revised terms.
               </p>
 
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <p className="text-gray-600 text-sm">
+              {/* Updated governance text styling */}
+              <div className="mt-12 p-6 bg-gray-50 rounded-lg">
+                <p className="text-sm text-gray-600">
                   All policies are governed by Indian law and subject to change. Please check this page periodically for
                   updates.
                 </p>
