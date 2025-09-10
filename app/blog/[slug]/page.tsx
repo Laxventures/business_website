@@ -4,7 +4,7 @@ import Link from "next/link"
 // Sample blog data - in a real app, this would come from a CMS or database
 const blogPosts = {
   "stress-free-travel-tips": {
-    title: "10 Essential Tips for Stress-Free Travel",
+    title: "10 Tips for Stress-Free Travel",
     date: "April 24, 2024",
     image: "/blog/stress-free-travel-hero.jpg",
     content: `
@@ -69,47 +69,48 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section with Mountain Background */}
       <section
         className="relative h-96 flex items-center justify-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/blog/mountain-landscape-hero.jpg')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/hot-air-balloon-over-scenic-mountain-landscape-adv.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Content Card */}
-        <div className="relative z-10 bg-white rounded-lg shadow-xl max-w-4xl mx-6 p-8 -mb-32">
+        <div className="relative z-10 bg-white rounded-2xl shadow-xl max-w-6xl mx-6 p-8 -mb-32">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Main Content */}
             <div className="lg:w-2/3">
-              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{post.title}</h1>
-              <p className="text-gray-600 mb-6">{post.date}</p>
+              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">{post.title}</h1>
+              <p className="text-gray-500 mb-8 text-lg">{post.date}</p>
 
-              {/* Featured Image */}
-              <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
-                <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
+              <div className="relative h-80 mb-8 rounded-xl overflow-hidden">
+                <Image
+                  src="/blog/woman-with-map-luggage.jpg"
+                  alt="Woman planning travel with map and luggage"
+                  fill
+                  className="object-cover"
+                />
               </div>
 
               {/* Blog Content */}
               <div
-                className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
+                className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </div>
 
-            {/* Sidebar */}
             <div className="lg:w-1/3">
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Recent Articles</h3>
-                <ul className="space-y-3">
+              <div className="bg-gray-50 rounded-xl p-6 sticky top-8">
+                <h3 className="text-xl font-bold text-slate-900 mb-6">Recent Articles</h3>
+                <ul className="space-y-4">
                   {recentArticles.map((article, index) => (
                     <li key={index} className="flex items-start">
                       <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0" />
                       <Link
                         href={`/blog/${article.slug}`}
-                        className="text-gray-700 hover:text-orange-500 transition-colors"
+                        className="text-gray-700 hover:text-orange-500 transition-colors text-sm leading-relaxed"
                       >
                         {article.title}
                       </Link>
@@ -123,7 +124,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Spacer for the overlapping card */}
-      <div className="h-32 bg-gray-100"></div>
+      <div className="h-40 bg-gray-50"></div>
     </div>
   )
 }
