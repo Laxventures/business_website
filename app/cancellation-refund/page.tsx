@@ -41,7 +41,7 @@ export default function CancellationRefundPage() {
                 <li>Booking is transferable with prior notice (subject to approval)</li>
               </ul>
 
-              <h2 className="text-2xl font-semibent text-slate-900 mb-4 mt-8">3.3 Visa Assistance</h2>
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4 mt-8">3.3 Visa Assistance</h2>
               <ul className="list-disc pl-6 mb-6 space-y-2">
                 <li>Visa service charges are non-refundable once documents are submitted</li>
                 <li>Any refund from consulates will be passed to the customer if applicable</li>
