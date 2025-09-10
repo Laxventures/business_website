@@ -67,18 +67,17 @@ export default function BlogPage() {
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
 
                   {/* Category Tag */}
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute top-4 left-4 z-10">
                     <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       {post.category}
                     </span>
                   </div>
 
-                  {/* Title */}
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <h2 className="text-white text-2xl font-bold leading-tight group-hover:text-orange-300 transition-colors">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                    <h2 className="text-white text-2xl font-bold leading-tight group-hover:text-orange-300 transition-colors drop-shadow-lg">
                       {post.title}
                     </h2>
                   </div>
