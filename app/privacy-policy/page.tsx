@@ -87,6 +87,13 @@ export default function PrivacyPolicyPage() {
                   hello@laxventures.in
                 </a>
               </p>
+
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <p className="text-gray-600 text-sm">
+                  All policies are governed by Indian law and subject to change. Please check this page periodically for
+                  updates.
+                </p>
+              </div>
             </div>
           </div>
         </div>
