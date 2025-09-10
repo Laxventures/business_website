@@ -68,62 +68,64 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="min-h-screen">
+    <main>
       <section
-        className="relative h-64 flex items-end justify-center pt-20"
+        className="relative min-h-[60vh] flex items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/hot-air-balloon-over-scenic-mountain-landscape-adv.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="relative z-10 bg-white rounded-t-2xl shadow-xl w-full max-w-6xl mx-6 p-8 translate-y-8">
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Main Content */}
-            <div className="lg:w-2/3">
-              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">{post.title}</h1>
-              <p className="text-gray-500 mb-8 text-lg">{post.date}</p>
+        <div className="text-center text-white px-4">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">{post.title}</h1>
+          <p className="text-xl text-gray-200 drop-shadow-lg">{post.date}</p>
+        </div>
+      </section>
 
-              <div className="relative h-80 mb-8 rounded-xl overflow-hidden">
-                <Image
-                  src="/blog/woman-with-map-luggage.jpg"
-                  alt="Woman planning travel with map and luggage"
-                  fill
-                  className="object-cover"
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="flex flex-col lg:flex-row gap-8">
+              {/* Main Content */}
+              <div className="lg:w-2/3">
+                <div className="relative h-80 mb-8 rounded-xl overflow-hidden">
+                  <Image
+                    src="/blog/woman-with-map-luggage.jpg"
+                    alt="Woman planning travel with map and luggage"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Blog Content */}
+                <div
+                  className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6"
+                  dangerouslySetInnerHTML={{ __html: post.content }}
                 />
               </div>
 
-              {/* Blog Content */}
-              <div
-                className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
-            </div>
-
-            <div className="lg:w-1/3">
-              <div className="bg-gray-50 rounded-xl p-6 sticky top-8">
-                <h3 className="text-xl font-bold text-slate-900 mb-6">Recent Articles</h3>
-                <ul className="space-y-4">
-                  {recentArticles.map((article, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0" />
-                      <Link
-                        href={`/blog/${article.slug}`}
-                        className="text-gray-700 hover:text-orange-500 transition-colors text-sm leading-relaxed"
-                      >
-                        {article.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              {/* Sidebar */}
+              <div className="lg:w-1/3">
+                <div className="bg-gray-50 rounded-xl p-6 sticky top-8">
+                  <h3 className="text-xl font-bold text-slate-900 mb-6">Recent Articles</h3>
+                  <ul className="space-y-4">
+                    {recentArticles.map((article, index) => (
+                      <li key={index} className="flex items-start">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0" />
+                        <Link
+                          href={`/blog/${article.slug}`}
+                          className="text-gray-700 hover:text-orange-500 transition-colors text-sm leading-relaxed"
+                        >
+                          {article.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <div className="h-8 bg-gray-50"></div>
-    </div>
+    </main>
   )
 }
