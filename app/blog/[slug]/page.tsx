@@ -70,7 +70,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   return (
     <div className="min-h-screen">
       <section
-        className="relative h-96 flex items-center justify-center"
+        className="relative h-64 flex items-end justify-center pt-20"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/hot-air-balloon-over-scenic-mountain-landscape-adv.jpg')`,
           backgroundSize: "cover",
@@ -78,7 +78,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="relative z-10 bg-white rounded-2xl shadow-xl max-w-6xl mx-6 p-8 -mb-32">
+        <div className="relative z-10 bg-white rounded-t-2xl shadow-xl w-full max-w-6xl mx-6 p-8 translate-y-8">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Main Content */}
             <div className="lg:w-2/3">
@@ -123,8 +123,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* Spacer for the overlapping card */}
-      <div className="h-40 bg-gray-50"></div>
+      <div className="h-8 bg-gray-50"></div>
     </div>
   )
 }
