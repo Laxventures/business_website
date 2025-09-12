@@ -1,15 +1,16 @@
-// lib/dynamo.ts
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb"
+import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb"
 
 const client = new DynamoDBClient({
-  region: process.env.NEXT_PUBLIC_AWS_REGION || "us-east-1",
+  region: process.env.AWS_REGION || "us-east-1",
   credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY!,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
   },
-});
+  maxAttempts: 3,
+  requestHandler: undefined,
+})
 
-const docClient = DynamoDBDocumentClient.from(client);
+const docClient = DynamoDBDocumentClient.from(client)
 
-export { docClient };
+export { docClient }

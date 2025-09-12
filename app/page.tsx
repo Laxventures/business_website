@@ -1,23 +1,45 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { getHomeContent } from "@/lib/getHomeContent";
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
 export default function Home() {
-  const [homeContent, setHomeContent] = useState<any>(null);
+  const [homeContent, setHomeContent] = useState<any>(null)
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getHomeContent();
-      setHomeContent(data);
-    };
-    fetchData();
-  }, []);
+      try {
+        const response = await fetch("/api/home-content")
+        const data = await response.json()
+        setHomeContent(data)
+      } catch (error) {
+        console.error("Error fetching home content:", error)
+        setHomeContent({
+          heroTitle: "Discover Your Next Adventure",
+          heroSubtitle: "Personalized travel experiences crafted just for you",
+          ctaButton: "Plan Your Journey",
+          whoWeAreTitle: "Who We Are",
+          whoWeAreContent: "We are passionate travelers who believe every journey should be unique and memorable.",
+          realStories: [
+            { slug: "paris", title: "Paris", image: "/paris-cityscape.png" },
+            { slug: "vietnam", title: "Vietnam", image: "/bustling-vietnamese-street.png" },
+            { slug: "tibet", title: "Tibet", image: "/tibet.jpg" },
+            { slug: "london", title: "London", image: "/london-cityscape.png" },
+          ],
+          testimonials: [
+            "Amazing experience! The itinerary was perfectly planned.",
+            "Best travel service I've ever used. Highly recommended!",
+          ],
+          contactUsCTA: "Contact Us",
+        })
+      }
+    }
+    fetchData()
+  }, [])
 
-  if (!homeContent) return <div>Loading...</div>;
+  if (!homeContent) return <div>Loading...</div>
   return (
     <div className="min-h-screen">
       <section className="relative min-h-[80vh] flex items-center justify-center bg-slate-800">
@@ -33,9 +55,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_80%)]">
             {homeContent.heroTitle}
           </h1>
-          <p className="text-xl text-white mb-8 max-w-2xl mx-auto drop-shadow-lg">
-            {homeContent.heroSubtitle}
-          </p>
+          <p className="text-xl text-white mb-8 max-w-2xl mx-auto drop-shadow-lg">{homeContent.heroSubtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               asChild
@@ -44,13 +64,6 @@ export default function Home() {
             >
               <Link href="/custom-itinerary">{homeContent.ctaButton}</Link>
             </Button>
-            {/* <Button
-              size="lg"
-              variant="outline"
-              className="bg-slate-900 hover:bg-slate-800 text-white border-slate-900 px-8 py-4 text-lg font-semibold rounded-lg transition-colors shadow-lg"
-            >
-              Build Custom Itinerary
-            </Button> */}
           </div>
         </div>
       </section>
@@ -60,9 +73,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-slate-900 mb-6">{homeContent.whoWeAreTitle}</h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {homeContent.whoWeAreContent}
-              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">{homeContent.whoWeAreContent}</p>
             </div>
             <div className="flex justify-center">
               <div className="w-80 h-80 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -73,75 +84,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-16">What Type of Traveller Are You?</h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-6xl mb-4">🥾</div>
-              <h3 className="text-xl font-semibold text-slate-900">The Adventurer</h3>
-            </div>
-            <div className="text-center">
-              <div className="text-6xl mb-4">🏛️</div>
-              <h3 className="text-xl font-semibold text-slate-900">The Cultural Explorer</h3>
-            </div>
-            <div className="text-center">
-              <div className="text-6xl mb-4">🌲</div>
-              <h3 className="text-xl font-semibold text-slate-900">Nature Seeker</h3>
-            </div>
-            <div className="text-center">
-              <div className="text-6xl mb-4">👨‍👩‍👧‍👦</div>
-              <h3 className="text-xl font-semibold text-slate-900">Family Planner</h3>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto space-y-16">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">Discover Your Travel Personality</h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-              Take our quiz to find out what type of traveler you are and get personalized travel recommendations
-              tailored just for you.
-            </p>
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg">
-              TAKE THE QUIZ
-            </Button>
-          </div>
-
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">Create Your Perfect Itinerary</h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-              Use our customizable itinerary builder to plan your next adventure, from destinations and activities to
-              accommodations.
-            </p>
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg">
-              START PLANNING
-            </Button>
-          </div>
-
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-slate-900 mb-6">Get Inspired by My Itineraries</h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-              Browse through detailed itineraries from my past travels and find recommendations to inspire your own
-              journey
-            </p>
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg">
-              VIEW ITINERARIES
-            </Button>
-          </div>
-        </div>
-      </section> */}
-
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-slate-900 text-center mb-12">Real Stories. Real Places.</h2>
           <div className="grid md:grid-cols-4 gap-6">
-            {homeContent.realStories.map((story) => (
-              <Link key={story.slug} href={`/itineraries/${story.slug}`} className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
+            {homeContent.realStories.map((story: any) => (
+              <Link
+                key={story.slug}
+                href={`/itineraries/${story.slug}`}
+                className="relative h-64 rounded-lg overflow-hidden group cursor-pointer"
+              >
                 <Image
-                  src={story.image}
+                  src={story.image || "/placeholder.svg"}
                   alt={story.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -229,7 +183,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-16">Testimonials</h2>
           <div className="space-y-12">
-            {homeContent.testimonials.map((text, idx) => (
+            {homeContent.testimonials.map((text: string, idx: number) => (
               <div key={idx}>
                 <div className="text-6xl text-gray-300 mb-4">"</div>
                 <p className="text-xl text-gray-700 mb-4">{text}</p>
