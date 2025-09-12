@@ -53,19 +53,19 @@ export default function Footer() {
             <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
             <div className="flex gap-4">
               <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Instagram">
-                <Image src="/icons/instagram.jpg" alt="Instagram" width={24} height={24} />
+                <Image src="/icons/instagram.png" alt="Instagram" width={24} height={24} />
               </a>
               <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="X (Twitter)">
-                <Image src="/icons/x-twitter.jpg" alt="X (Twitter)" width={24} height={24} />
+                <Image src="/icons/x.png" alt="X (Twitter)" width={24} height={24} />
               </a>
               <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Facebook">
-                <Image src="/icons/facebook.jpg" alt="Facebook" width={24} height={24} />
+                <Image src="/icons/facebook.png" alt="Facebook" width={24} height={24} />
               </a>
               <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="YouTube">
-                <Image src="/icons/youtube.jpg" alt="YouTube" width={24} height={24} />
+                <Image src="/icons/youtube.png" alt="YouTube" width={24} height={24} />
               </a>
               <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Threads">
-                <Image src="/icons/threads.jpg" alt="Threads" width={24} height={24} />
+                <Image src="/icons/threads.png" alt="Threads" width={24} height={24} />
               </a>
             </div>
           </div>

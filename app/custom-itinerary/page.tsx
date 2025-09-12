@@ -87,7 +87,7 @@ export default function CustomItinerary() {
                 <div key={index} className="text-center">
                   <div className="mb-4">
                     <Image
-                      src={traveller.image}
+                      src={`/icons/${traveller.image}`}
                       alt={traveller.title}
                       width={120}
                       height={120}
