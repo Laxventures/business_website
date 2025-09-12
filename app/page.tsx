@@ -1,8 +1,23 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
+import { getHomeContent } from "@/lib/getHomeContent";
 import Image from "next/image"
 import Link from "next/link"
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [homeContent, setHomeContent] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getHomeContent();
+      setHomeContent(data);
+    };
+    fetchData();
+  }, []);
+
+  if (!homeContent) return <div>Loading...</div>;
   return (
     <div className="min-h-screen">
       <section className="relative min-h-[80vh] flex items-center justify-center bg-slate-800">
@@ -16,10 +31,10 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-2xl [text-shadow:_2px_2px_4px_rgb(0_0_0_/_80%)]">
-            Travel Without Limits with LaxVentures
+            {homeContent.heroTitle}
           </h1>
           <p className="text-xl text-white mb-8 max-w-2xl mx-auto drop-shadow-lg">
-            Personalized itineraries curated just for you. Explore smarter, travel deeper.
+            {homeContent.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -27,7 +42,7 @@ export default function Home() {
               size="lg"
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors shadow-lg"
             >
-              <Link href="/custom-itinerary">Build Custom Itinerary</Link>
+              <Link href="/custom-itinerary">{homeContent.ctaButton}</Link>
             </Button>
             {/* <Button
               size="lg"
@@ -44,11 +59,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">Who We Are</h2>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">{homeContent.whoWeAreTitle}</h2>
               <p className="text-lg text-gray-700 leading-relaxed">
-                LaxVentures is your smart travel assistant - blending expert-curated trips with AI-powered
-                personalization. Whether you're a solo adventurer, a romantic couple, or a family of five, we craft
-                journeys that fit you like a glove.
+                {homeContent.whoWeAreContent}
               </p>
             </div>
             <div className="flex justify-center">
@@ -125,54 +138,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-slate-900 text-center mb-12">Real Stories. Real Places.</h2>
           <div className="grid md:grid-cols-4 gap-6">
-            <Link href="/itineraries/paris" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
-              <Image
-                src="/eiffel-tower-paris.png"
-                alt="Paris"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/70" />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_100%)]">
-                PARIS
-              </div>
-            </Link>
-            <Link href="/itineraries/vietnam" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
-              <Image
-                src="/ha-long-bay.png"
-                alt="Vietnam"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/70" />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_100%)]">
-                VIETNAM
-              </div>
-            </Link>
-            <Link href="/itineraries/tibet" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
-              <Image
-                src="/mountain-monastery-tibet.jpg"
-                alt="Tibet"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/70" />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_100%)]">
-                TIBET
-              </div>
-            </Link>
-            <Link href="/itineraries/london" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
-              <Image
-                src="/tower-bridge-london-uk.jpg"
-                alt="UK"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/70" />
-              <div className="absolute bottom-4 left-4 text-white font-bold text-xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_100%)]">
-                UK
-              </div>
-            </Link>
+            {homeContent.realStories.map((story) => (
+              <Link key={story.slug} href={`/itineraries/${story.slug}`} className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
+                <Image
+                  src={story.image}
+                  alt={story.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/70" />
+                <div className="absolute bottom-4 left-4 text-white font-bold text-xl [text-shadow:_3px_3px_6px_rgb(0_0_0_/_100%)]">
+                  {story.title}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -250,18 +229,12 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-16">Testimonials</h2>
           <div className="space-y-12">
-            <div>
-              <div className="text-6xl text-gray-300 mb-4">"</div>
-              <p className="text-xl text-gray-700 mb-4">
-                Our Scotland trip was a dream come true. Thanks, LaxVentures!
-              </p>
-            </div>
-            <div>
-              <div className="text-6xl text-gray-300 mb-4">"</div>
-              <p className="text-xl text-gray-700 mb-4">
-                An incredible experience with memories that will last a lifetime.
-              </p>
-            </div>
+            {homeContent.testimonials.map((text, idx) => (
+              <div key={idx}>
+                <div className="text-6xl text-gray-300 mb-4">"</div>
+                <p className="text-xl text-gray-700 mb-4">{text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -274,7 +247,7 @@ export default function Home() {
             asChild
             className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg mt-8"
           >
-            <Link href="/contact">Contact Us</Link>
+            <Link href="/contact">{homeContent.contactUsCTA}</Link>
           </Button>
         </div>
       </section>
