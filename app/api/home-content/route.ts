@@ -23,18 +23,14 @@ const fallbackContent = {
 
 export async function GET() {
   try {
-    console.log("Using fallback content (DynamoDB temporarily disabled)")
-    return NextResponse.json(fallbackContent)
-
-    // TODO: Re-enable DynamoDB when deployed to production environment
-    // if (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) {
-    //   const { getHomeContent } = await import("@/lib/getHomeContent")
-    //   const content = await getHomeContent()
-    //   return NextResponse.json(content || fallbackContent)
-    // } else {
-    //   console.log("AWS credentials not found, using fallback content")
-    //   return NextResponse.json(fallbackContent)
-    // }
+    if (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) {
+      const { getHomeContent } = await import("@/lib/getHomeContent")
+      const content = await getHomeContent()
+      return NextResponse.json(content || fallbackContent)
+    } else {
+      console.log("AWS credentials not found, using fallback content")
+      return NextResponse.json(fallbackContent)
+    }
   } catch (error) {
     console.error("Error fetching home content:", error)
     return NextResponse.json(fallbackContent)
