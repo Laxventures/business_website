@@ -5,7 +5,7 @@ export default function TermsConditionsPage() {
       <section
         className="relative h-64 flex items-center justify-center text-white"
         style={{
-          backgroundImage: "url(/hot-air-balloon-over-scenic-mountain-landscape-adv.jpg)",
+          backgroundImage: "url(/hot-air-balloon.png)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

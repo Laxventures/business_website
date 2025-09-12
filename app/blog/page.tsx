@@ -39,7 +39,7 @@ export default function BlogPage() {
       <section
         className="relative h-96 flex items-center justify-center text-white"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/hot-air-balloon-over-scenic-mountain-landscape-adv.jpg')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/hot-air-balloon.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

@@ -43,7 +43,7 @@ export default function ItinerariesPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('/hot-air-balloon-over-scenic-mountain-landscape-adv.jpg')`,
+            backgroundImage: `url('/hot-air-balloon.png')`,
           }}
         >
           <div className="absolute inset-0 bg-slate-900/60"></div>

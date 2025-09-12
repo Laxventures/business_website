@@ -72,7 +72,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <section
         className="relative min-h-[60vh] flex items-center justify-center bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/hot-air-balloon-over-scenic-mountain-landscape-adv.jpg')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/hot-air-balloon.png')`,
         }}
       >
         <div className="text-center text-white px-4">

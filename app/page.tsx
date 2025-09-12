@@ -46,7 +46,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
           style={{
-            backgroundImage: `url('/hot-air-balloon-over-scenic-mountain-landscape-adv.jpg')`,
+            backgroundImage: `url('/hot-air-balloon.png')`,
           }}
         />
         <div className="absolute inset-0 bg-black/40" />
