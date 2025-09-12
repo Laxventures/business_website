@@ -21,7 +21,7 @@ export default function Home() {
           heroSubtitle: "Personalized travel experiences crafted just for you",
           ctaButton: "Plan Your Journey",
           whoWeAreTitle: "Who We Are",
-          whoWeAreContent: "We are passionate travelers who believe every journey should be unique and memorable.",
+          whoWeAreContent: "We are passionate travellers who believe every journey should be unique and memorable.",
           realStories: [
             { slug: "paris", title: "Paris", image: "/paris-cityscape.png" },
             { slug: "vietnam", title: "Vietnam", image: "/bustling-vietnamese-street.png" },

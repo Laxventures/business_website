@@ -26,7 +26,7 @@ export default function BlogPage() {
     },
     {
       id: 4,
-      title: "Top 5 Tips for Solo Female Travelers",
+      title: "Top 5 Tips for Solo Female Travellers",
       image: "/blog/solo-female-traveler.jpg",
       category: "TRAVEL TIPS",
       slug: "solo-female-travel-tips",

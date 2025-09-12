@@ -7,7 +7,7 @@ const fallbackContent = {
   ctaButton: "Plan Your Journey",
   whoWeAreTitle: "Who We Are",
   whoWeAreContent:
-    "We are passionate travelers who believe every journey should be unique and memorable. With years of experience exploring the world, we curate personalized itineraries that match your travel style and preferences.",
+    "We are passionate travellers who believe every journey should be unique and memorable. With years of experience exploring the world, we curate personalized itineraries that match your travel style and preferences.",
   realStories: [
     { slug: "paris", title: "Paris", image: "/paris-cityscape.png" },
     { slug: "vietnam", title: "Vietnam", image: "/bustling-vietnamese-street.png" },

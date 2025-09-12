@@ -16,8 +16,26 @@ export default function CustomItinerary() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getHomeContent();
-      setHomeContent(data);
+      try {
+        const response = await fetch("/api/home-content")
+        const data = await response.json()
+        setHomeContent(data)
+      } catch (error) {
+        console.error("Error fetching home content:", error)
+        setHomeContent({
+          travellertypes: [
+            { title: "The Pilgrims", image: "/icon-pilgrims.png" },
+            { title: "The Cultural Explorer", image: "/icon-culture.png" },
+            { title: "The Adventurer", image: "/icon-adventure.png" },
+            { title: "Nature Seeker", image: "/icon-nature.png" },
+            { title: "Family Planner", image: "/icon-family.png" },
+            { title: "The Budget Traveller", image: "/icon-budget.png" },
+            { title: "The Luxury Traveller", image: "/logo-family.png" },
+            { title: "The Solo Traveller", image: "/logo-solo.png" },
+          ],
+          typeOfTravellerTitle: "What Type of Traveller Are You?",
+        })
+      }
     };
     fetchData();
   }, []);
@@ -62,7 +80,7 @@ export default function CustomItinerary() {
         <section className="py-20 px-6 bg-gray-50">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-slate-900 mb-16">
-              {homeContent.typeOfTravelerTitle || "What Type of Traveller Are You?"}
+              {homeContent.typeOfTravellerTitle || "What Type of Traveller Are You?"}
             </h2>
             <div className="grid md:grid-cols-4 gap-8">
               {homeContent.travellertypes.map((traveller: any, index: number) => (

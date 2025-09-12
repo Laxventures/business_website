@@ -24,7 +24,7 @@ const blogPosts = {
       
       <p>Start by being flexible with your travel dates and destinations. Off-season travel can save you significant money on flights and accommodations while offering a more authentic local experience.</p>
       
-      <p>Consider alternative accommodations like hostels, guesthouses, or vacation rentals. These options often provide better value and opportunities to connect with fellow travelers.</p>
+      <p>Consider alternative accommodations like hostels, guesthouses, or vacation rentals. These options often provide better value and opportunities to connect with fellow travellers.</p>
     `,
   },
   "hidden-gems-travel": {
@@ -40,7 +40,7 @@ const blogPosts = {
     `,
   },
   "solo-female-travel-tips": {
-    title: "Top 5 Tips for Solo Female Travelers",
+    title: "Top 5 Tips for Solo Female Travellers",
     date: "April 15, 2024",
     image: "/blog/solo-female-travel-hero.jpg",
     content: `
@@ -48,7 +48,7 @@ const blogPosts = {
       
       <p>Trust your instincts, research your destinations thoroughly, and always have backup plans. Stay connected with family and friends, and don't hesitate to ask for help when needed.</p>
       
-      <p>Join female travel communities online and connect with other solo travelers. Their experiences and advice can be invaluable for planning safe and enjoyable trips.</p>
+      <p>Join female travel communities online and connect with other solo travellers. Their experiences and advice can be invaluable for planning safe and enjoyable trips.</p>
     `,
   },
 }
