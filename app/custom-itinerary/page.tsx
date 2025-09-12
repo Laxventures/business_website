@@ -1,20 +1,32 @@
 "use client"
 
-import type React from "react"
+import React, { useEffect, useState } from "react"
+import Image from "next/image"
+import { getHomeContent } from "@/lib/getHomeContent";
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Calendar, Settings } from "lucide-react"
-import { useState } from "react"
+import { useState as useReactState } from "react"
 
 export default function CustomItinerary() {
-  const [formData, setFormData] = useState({
+  const [homeContent, setHomeContent] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getHomeContent();
+      setHomeContent(data);
+    };
+    fetchData();
+  }, []);
+
+  const [formData, setFormData] = useReactState({
     destination: "",
     startDate: "",
     endDate: "",
-    interests: "",
+    travalerTypes: "",
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -44,6 +56,33 @@ export default function CustomItinerary() {
           </p>
         </div>
       </section>
+
+      {/* Traveller Types Section */}
+      {homeContent?.travellertypes && (
+        <section className="py-20 px-6 bg-gray-50">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-slate-900 mb-16">
+              {homeContent.typeOfTravelerTitle || "What Type of Traveller Are You?"}
+            </h2>
+            <div className="grid md:grid-cols-4 gap-8">
+              {homeContent.travellertypes.map((traveller: any, index: number) => (
+                <div key={index} className="text-center">
+                  <div className="mb-4">
+                    <Image
+                      src={traveller.image}
+                      alt={traveller.title}
+                      width={120}
+                      height={120}
+                      className="mx-auto w-28 h-28 object-contain"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900">{traveller.title}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Form Section */}
       <section className="py-20 px-6 bg-gray-50">
@@ -95,25 +134,25 @@ export default function CustomItinerary() {
               </div>
 
               <div>
-                <Label htmlFor="interests" className="text-base font-medium text-slate-900 mb-2 block">
-                  Interests
+                <Label htmlFor="travalerTypes" className="text-base font-medium text-slate-900 mb-2 block">
+                  Select what type of traveller you are
                 </Label>
                 <Select
-                  value={formData.interests}
-                  onValueChange={(value) => setFormData({ ...formData, interests: value })}
+                  value={formData.travalerTypes}
+                  onValueChange={(value) => setFormData({ ...formData, travalerTypes: value })}
                 >
                   <SelectTrigger className="h-12 text-base">
-                    <SelectValue placeholder="Select your interests" />
+                    <SelectValue placeholder="Select what type of traveller you are" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="adventure">Adventure & Outdoor</SelectItem>
-                    <SelectItem value="culture">Culture & History</SelectItem>
-                    <SelectItem value="nature">Nature & Wildlife</SelectItem>
-                    <SelectItem value="food">Food & Culinary</SelectItem>
-                    <SelectItem value="relaxation">Relaxation & Wellness</SelectItem>
-                    <SelectItem value="nightlife">Nightlife & Entertainment</SelectItem>
-                    <SelectItem value="photography">Photography</SelectItem>
-                    <SelectItem value="family">Family Friendly</SelectItem>
+                    {homeContent?.travellertypes?.map((traveller: any, index: number) => (
+                      <SelectItem
+                        key={index}
+                        value={traveller.title.toLowerCase().replace(/\s+/g, '-')}
+                      >
+                        {traveller.title}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>

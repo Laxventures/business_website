@@ -76,8 +76,14 @@ export default function Home() {
               <p className="text-lg text-gray-700 leading-relaxed">{homeContent.whoWeAreContent}</p>
             </div>
             <div className="flex justify-center">
-              <div className="w-80 h-80 bg-blue-100 rounded-lg flex items-center justify-center">
-                <div className="text-6xl">👫</div>
+              <div className="w-80 h-80 rounded-lg flex items-center justify-center">
+                <Image
+                  src="/who-we-are-couple.png"
+                  alt="Couple Illustration"
+                  width={200}
+                  height={200}
+                  className="object-contain"
+                />
               </div>
             </div>
           </div>
