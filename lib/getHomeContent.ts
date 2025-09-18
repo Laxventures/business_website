@@ -8,7 +8,7 @@ export async function getHomeContent() {
   if (cachedHomeContent) return cachedHomeContent;
 
   const command = new GetCommand({
-    TableName: "home_page_content",
+    TableName: process.env.DDB_HOME_CONTENT_TABLE!,
     Key: { id: "home" },
   });
 
