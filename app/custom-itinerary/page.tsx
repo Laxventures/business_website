@@ -159,6 +159,37 @@ export default function CustomItinerary() {
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="email" className="text-base font-medium text-slate-900 mb-2 block">
+                    Email Address
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="h-12 text-base"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="phone" className="text-base font-medium text-slate-900 mb-2 block">
+                    Phone Number
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="+1234567890"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="h-12 text-base"
+                    required
+                  />
+                </div>
+              </div>
+
               <div>
                 <Label htmlFor="destination" className="text-base font-medium text-slate-900 mb-2 block">
                   Destination
@@ -222,37 +253,6 @@ export default function CustomItinerary() {
                     ))}
                   </SelectContent>
                 </Select>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="email" className="text-base font-medium text-slate-900 mb-2 block">
-                    Email Address
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="h-12 text-base"
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="phone" className="text-base font-medium text-slate-900 mb-2 block">
-                    Phone Number
-                  </Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="+1234567890"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="h-12 text-base"
-                    required
-                  />
-                </div>
               </div>
 
               <Button
