@@ -17,9 +17,9 @@ export default function Header() {
           <Link href="/itineraries" className="hover:text-orange-300 transition-colors">
             Itineraries
           </Link>
-          <Link href="/blog" className="hover:text-orange-300 transition-colors">
+          {/* <Link href="/blog" className="hover:text-orange-300 transition-colors">
             Blog
-          </Link>
+          </Link> */}
           <Link href="/contact" className="hover:text-orange-300 transition-colors">
             Contact
           </Link>

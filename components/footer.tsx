@@ -40,9 +40,9 @@ export default function Footer() {
               <Link href="/itineraries" className="block hover:text-orange-300 transition-colors">
                 Destinations
               </Link>
-              <Link href="/blog" className="block hover:text-orange-300 transition-colors">
+              {/* <Link href="/blog" className="block hover:text-orange-300 transition-colors">
                 Travel Blogs
-              </Link>
+              </Link> */}
               <Link href="/privacy-policy" className="block hover:text-orange-300 transition-colors">
                 Privacy Policy
               </Link>
