@@ -69,7 +69,7 @@ export default function ComingSoon({ cityName }: ComingSoonProps) {
           </div>
 
           {/* Call to Action */}
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             <Button
               size="lg"
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-105"
@@ -79,7 +79,7 @@ export default function ComingSoon({ cityName }: ComingSoonProps) {
             </Button>
 
             <p className="text-white/70 text-sm">Be the first to know when we unveil the complete itinerary!</p>
-          </div>
+          </div> */}
 
           {/* Feature Preview */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
