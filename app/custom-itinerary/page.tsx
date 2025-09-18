@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import type React from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
-import { getHomeContent } from "@/lib/getHomeContent";
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,7 +12,8 @@ import { Calendar, Settings } from "lucide-react"
 import { useState as useReactState } from "react"
 
 export default function CustomItinerary() {
-  const [homeContent, setHomeContent] = useState<any>(null);
+  const [homeContent, setHomeContent] = useState<any>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,21 +37,72 @@ export default function CustomItinerary() {
           typeOfTravellerTitle: "What Type of Traveller Are You?",
         })
       }
-    };
-    fetchData();
-  }, []);
+    }
+    fetchData()
+  }, [])
 
   const [formData, setFormData] = useReactState({
     destination: "",
     startDate: "",
     endDate: "",
     travalerTypes: "",
+    email: "",
+    phone: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const isFormValid = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const phoneRegex = /^[+]?[1-9][\d]{0,15}$/
+
+    return (
+      formData.destination.trim() !== "" &&
+      formData.startDate !== "" &&
+      formData.endDate !== "" &&
+      formData.travalerTypes !== "" &&
+      emailRegex.test(formData.email) &&
+      phoneRegex.test(formData.phone)
+    )
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Building itinerary with:", formData)
-    // TODO: Implement itinerary building logic
+
+    if (!isFormValid()) {
+      alert("Please fill in all fields with valid information.")
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/custom-itinerary", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        alert("Your custom itinerary request has been submitted successfully! We'll get back to you soon.")
+        // Reset form
+        setFormData({
+          destination: "",
+          startDate: "",
+          endDate: "",
+          travalerTypes: "",
+          email: "",
+          phone: "",
+        })
+      } else {
+        throw new Error("Failed to submit request")
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      alert("There was an error submitting your request. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -164,10 +216,7 @@ export default function CustomItinerary() {
                   </SelectTrigger>
                   <SelectContent>
                     {homeContent?.travellertypes?.map((traveller: any, index: number) => (
-                      <SelectItem
-                        key={index}
-                        value={traveller.title.toLowerCase().replace(/\s+/g, '-')}
-                      >
+                      <SelectItem key={index} value={traveller.title.toLowerCase().replace(/\s+/g, "-")}>
                         {traveller.title}
                       </SelectItem>
                     ))}
@@ -175,11 +224,43 @@ export default function CustomItinerary() {
                 </Select>
               </div>
 
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="email" className="text-base font-medium text-slate-900 mb-2 block">
+                    Email Address
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="h-12 text-base"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="phone" className="text-base font-medium text-slate-900 mb-2 block">
+                    Phone Number
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="+1234567890"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="h-12 text-base"
+                    required
+                  />
+                </div>
+              </div>
+
               <Button
                 type="submit"
-                className="w-full bg-orange-500 hover:bg-orange-600 text-white h-12 text-lg font-semibold rounded-lg transition-colors"
+                disabled={!isFormValid() || isSubmitting}
+                className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white h-12 text-lg font-semibold rounded-lg transition-colors"
               >
-                Build itinerary
+                {isSubmitting ? "Submitting..." : "Build itinerary"}
               </Button>
             </form>
           </div>
