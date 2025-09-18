@@ -16,6 +16,43 @@ export default function ContactPage() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+
+  // Email validation function
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
+  // Check if form is valid
+  const isFormValid = () => {
+    return (
+      formData.name.trim().length > 0 &&
+      formData.email.trim().length > 0 &&
+      isValidEmail(formData.email) &&
+      formData.message.trim().length > 0
+    )
+  }
+
+  // Validate individual fields
+  const validateField = (name: string, value: string) => {
+    switch (name) {
+      case "name":
+        return value.trim().length === 0 ? "Name is required" : ""
+      case "email":
+        if (value.trim().length === 0) return "Email is required"
+        if (!isValidEmail(value)) return "Please enter a valid email address"
+        return ""
+      case "message":
+        return value.trim().length === 0 ? "Message is required" : ""
+      default:
+        return ""
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,6 +71,7 @@ export default function ContactPage() {
       if (response.ok) {
         setSubmitStatus("success")
         setFormData({ name: "", email: "", message: "" })
+        setErrors({ name: "", email: "", message: "" })
       } else {
         setSubmitStatus("error")
       }
@@ -45,9 +83,16 @@ export default function ContactPage() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
+    }))
+
+    const error = validateField(name, value)
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
     }))
   }
 
@@ -87,9 +132,12 @@ export default function ContactPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full p-4 text-lg border-2 border-gray-200 rounded-lg focus:border-orange-400 focus:ring-orange-400"
+                  className={`w-full p-4 text-lg border-2 rounded-lg focus:ring-orange-400 ${
+                    errors.name ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-orange-400"
+                  }`}
                   placeholder="Your full name"
                 />
+                {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
               </div>
 
               <div>
@@ -103,9 +151,12 @@ export default function ContactPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full p-4 text-lg border-2 border-gray-200 rounded-lg focus:border-orange-400 focus:ring-orange-400"
+                  className={`w-full p-4 text-lg border-2 rounded-lg focus:ring-orange-400 ${
+                    errors.email ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-orange-400"
+                  }`}
                   placeholder="your.email@example.com"
                 />
+                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
               </div>
 
               <div>
@@ -119,9 +170,12 @@ export default function ContactPage() {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full p-4 text-lg border-2 border-gray-200 rounded-lg focus:border-orange-400 focus:ring-orange-400 resize-none"
+                  className={`w-full p-4 text-lg border-2 rounded-lg focus:ring-orange-400 resize-none ${
+                    errors.message ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-orange-400"
+                  }`}
                   placeholder="Tell us about your travel plans, questions, or how we can help you..."
                 />
+                {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
               </div>
 
               {submitStatus === "success" && (
@@ -139,8 +193,8 @@ export default function ContactPage() {
               <div className="text-center">
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors disabled:opacity-50"
+                  disabled={isSubmitting || !isFormValid()}
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "latest",
-    "@aws-sdk/client-ses": "^3.891.0",
+    "@aws-sdk/client-ses": "latest",
     "@aws-sdk/lib-dynamodb": "latest",
     "@radix-ui/react-label": "latest",
     "@radix-ui/react-select": "latest",
