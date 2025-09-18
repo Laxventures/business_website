@@ -165,7 +165,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-white">
+      {/* <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-slate-900 text-center mb-4">Travel Smart: Latest Blogs & Tips</h2>
           <div className="text-center mb-12">
@@ -183,7 +183,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">

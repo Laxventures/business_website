@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image src="/laxventures-logo.png" alt="LaxVentures Logo" width={40} height={40} className="rounded-lg" />
+              <Image src="/laxventures-logo-lv.png" alt="LaxVentures Logo" width={40} height={40} className="rounded-lg" />
               <h3 className="text-xl font-semibold">LaxVentures</h3>
             </div>
             <div className="space-y-3">
