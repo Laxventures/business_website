@@ -22,7 +22,17 @@ const fallbackContent = {
 }
 
 export async function GET() {
-  // AWS SDK will work in production deployment but not in v0 preview
-  console.log("Using fallback content for v0 environment compatibility")
-  return NextResponse.json(fallbackContent)
+  try {
+    if (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) {
+      const { getHomeContent } = await import("@/lib/getHomeContent")
+      const content = await getHomeContent()
+      return NextResponse.json(content || fallbackContent)
+    } else {
+      console.log("AWS credentials not found, using fallback content")
+      return NextResponse.json(fallbackContent)
+    }
+  } catch (error) {
+    console.error("Error fetching home content:", error)
+    return NextResponse.json(fallbackContent)
+  }
 }
