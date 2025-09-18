@@ -1,47 +1,46 @@
-import { type NextRequest, NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server";
+import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
+
+const ses = new SESClient({ region: process.env.AWS_REGION });
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, message } = await request.json()
+    const { name, email, message } = await request.json();
 
-    // Validate required fields
     if (!name || !email || !message) {
-      return NextResponse.json({ error: "All fields are required" }, { status: 400 })
+      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
     }
 
-    // Here you would typically integrate with an email service like:
-    // - Nodemailer with SMTP
-    // - SendGrid
-    // - Resend
-    // - AWS SES
+    const params = {
+      Destination: {
+        ToAddresses: [process.env.SES_TO_EMAIL!],
+      },
+      Message: {
+        Body: {
+          Html: {
+            Charset: "UTF-8",
+            Data: `
+              <h2>New Contact Form Submission</h2>
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Message:</strong><br/>${message.replace(/\n/g, "<br>")}</p>
+            `,
+          },
+        },
+        Subject: {
+          Charset: "UTF-8",
+          Data: `New Contact Form Submission from ${name}`,
+        },
+      },
+      Source: process.env.SES_FROM_EMAIL!,
+      ReplyToAddresses: [email],
+    };
 
-    // For now, we'll log the contact form data
-    console.log("Contact form submission:", {
-      name,
-      email,
-      message,
-      timestamp: new Date().toISOString(),
-    })
+    await ses.send(new SendEmailCommand(params));
 
-    // In a real implementation, you would send an email to hello@laxventures.in
-    // Example with a hypothetical email service:
-    /*
-    await emailService.send({
-      to: 'hello@laxventures.in',
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `
-    })
-    */
-
-    return NextResponse.json({ message: "Message sent successfully" }, { status: 200 })
+    return NextResponse.json({ message: "Message sent successfully" }, { status: 200 });
   } catch (error) {
-    console.error("Contact form error:", error)
-    return NextResponse.json({ error: "Failed to send message" }, { status: 500 })
+    console.error("Contact form error:", error);
+    return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
   }
 }

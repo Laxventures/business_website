@@ -1,4 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server"
+import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses"
+
+// Initialize SES client
+const ses = new SESClient({
+  region: "us-east-1", // Change if your SES is in another region
+})
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,24 +27,29 @@ export async function POST(request: NextRequest) {
       Please contact the customer to discuss their custom itinerary requirements.
     `
 
-    // Here you would integrate with your email service
-    // For now, we'll just log the data and return success
-    console.log("Custom Itinerary Request:", {
-      to: "hello@laxventures.in",
-      subject: "New Custom Itinerary Request",
-      content: emailContent,
-      customerData: formData,
+    // Prepare SES command
+    const command = new SendEmailCommand({
+      Source: "hello@laxventures.in", // must be a verified SES identity
+      Destination: {
+        ToAddresses: ["hello@laxventures.in"], // you can add more here
+      },
+      Message: {
+        Subject: { Data: "New Custom Itinerary Request" },
+        Body: {
+          Text: { Data: emailContent },
+        },
+      },
     })
 
-    // In production, you would send the actual email here
-    // Example with a service like SendGrid, Nodemailer, etc.
+    // Send email
+    await ses.send(command)
 
     return NextResponse.json({
       success: true,
-      message: "Custom itinerary request submitted successfully",
+      message: "Custom itinerary request submitted and email sent successfully",
     })
   } catch (error) {
-    console.error("Error processing custom itinerary request:", error)
+    console.error("Error sending custom itinerary request:", error)
     return NextResponse.json({ success: false, message: "Failed to process request" }, { status: 500 })
   }
 }
