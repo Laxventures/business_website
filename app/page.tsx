@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { Spinner } from "@/components/ui/spinner"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -39,7 +40,17 @@ export default function Home() {
     fetchData()
   }, [])
 
-  if (!homeContent) return <div>Loading...</div>
+  if (!homeContent) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <Spinner size="lg" className="mx-auto mb-4" />
+          <p className="text-gray-600 text-lg">Loading your adventure...</p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen">
       <section className="relative min-h-[80vh] flex items-center justify-center bg-slate-800">
