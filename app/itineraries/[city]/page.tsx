@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation"
 import {
   ChevronDown,
   MapPin,
@@ -12,6 +11,7 @@ import {
   Download,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import ComingSoon from "@/components/coming-soon"
 
 const itineraryData = {
   paris: {
@@ -355,7 +355,7 @@ export default function CityItineraryPage({ params }: { params: { city: string }
   const cityData = itineraryData[params.city as keyof typeof itineraryData]
 
   if (!cityData) {
-    notFound()
+    return <ComingSoon cityName={params.city} />
   }
 
   return (
