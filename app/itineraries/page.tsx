@@ -1,4 +1,6 @@
-import Link from "next/link"
+// import { ScanCommand } from "@aws-sdk/lib-dynamodb";
+import Link from "next/link";
+// import { ddb } from "@/lib/dynamo";
 
 export default function ItinerariesPage() {
   const itineraries = [
@@ -35,6 +37,24 @@ export default function ItinerariesPage() {
       imageQuery: "Aerial view of Cape Town city with Table Mountain and ocean coastline",
     },
   ]
+
+  // const { Items = [] } = await ddb.send(
+  //   new ScanCommand({ TableName: process.env.DDB_ITINERARIES_TABLE!, ProjectionExpression: "city,title,heroImage" })
+  // );
+
+  // return (
+  //   <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+  //     {Items.map((it: any) => (
+  //       <Link key={it.city} href={`/itineraries/${it.city}`} className="block rounded-lg overflow-hidden shadow hover:shadow-lg">
+  //         <div className="aspect-video bg-cover bg-center" style={{ backgroundImage: `url('${it.heroImage}')` }} />
+  //         <div className="p-4">
+  //           <h3 className="text-xl font-semibold">{it.title}</h3>
+  //           <p className="text-slate-500">/itineraries/{it.city}</p>
+  //         </div>
+  //       </Link>
+  //     ))}
+  //   </div>
+  // );
 
   return (
     <div className="min-h-screen">
