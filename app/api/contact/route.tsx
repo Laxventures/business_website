@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 
-const ses = new SESClient({ region: process.env.AWS_REGION });
+const ses = new SESClient({ region: process.env.NEXT_PUBLIC_REGION });
 
 export async function POST(request: NextRequest) {
   try {
