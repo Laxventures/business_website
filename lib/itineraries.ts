@@ -21,11 +21,11 @@ export type CityItinerary = {
 };
 
 export async function getItinerary(city: string): Promise<CityItinerary | null> {
-  const tableName = process.env.DDB_ITINERARIES_TABLE;
-  console.log("ENV DDB_ITINERARIES_TABLE:", tableName);
+  const tableName = process.env.NEXT_PUBLIC_DDB_ITINERARIES_TABLE;
+  console.log("ENV NEXT_PUBLIC_DDB_ITINERARIES_TABLE:", tableName);
   console.log("ENV Region:", process.env.NEXT_PUBLIC_REGION);
   if (!tableName) {
-    throw new Error("DDB_ITINERARIES_TABLE is not defined in environment variables");
+    throw new Error("NEXT_PUBLIC_DDB_ITINERARIES_TABLE is not defined in environment variables");
   }
   const { Item } = await ddb.send(
     new GetCommand({

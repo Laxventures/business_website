@@ -39,7 +39,7 @@ export default function ItinerariesPage() {
   ]
 
   // const { Items = [] } = await ddb.send(
-  //   new ScanCommand({ TableName: process.env.DDB_ITINERARIES_TABLE!, ProjectionExpression: "city,title,heroImage" })
+  //   new ScanCommand({ TableName: process.env.NEXT_PUBLIC_DDB_ITINERARIES_TABLE!, ProjectionExpression: "city,title,heroImage" })
   // );
 
   // return (

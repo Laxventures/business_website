@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { getHomeContent } from "@/lib/getHomeContent"
 
 const fallbackContent = {
   heroTitle: "Discover Your Next Adventure",
@@ -23,7 +24,6 @@ const fallbackContent = {
 
 export async function GET() {
   try {
-    const { getHomeContent } = await import("@/lib/getHomeContent")
     const content = await getHomeContent()
     return NextResponse.json(content || fallbackContent)
   } catch (error) {
