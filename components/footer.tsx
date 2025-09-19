@@ -58,13 +58,25 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
             <div className="flex gap-4">
-              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/laxventures?igsh=bDV4YTlzMnJzdW00&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="Instagram"
+              >
                 <Image src="/icons/instagram.png" alt="Instagram" width={24} height={24} />
               </a>
               <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="X (Twitter)">
                 <Image src="/icons/x.png" alt="X (Twitter)" width={24} height={24} />
               </a>
-              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Facebook">
+              <a
+                href="https://www.facebook.com/share/19SmSTeJZ5/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="Facebook"
+              >
                 <Image src="/icons/facebook.png" alt="Facebook" width={24} height={24} />
               </a>
               <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="YouTube">
