@@ -67,7 +67,13 @@ export default function Footer() {
               >
                 <Image src="/icons/instagram.png" alt="Instagram" width={24} height={24} />
               </a>
-              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="X (Twitter)">
+              <a
+                href="https://x.com/laxventures?s=21"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="X (Twitter)"
+              >
                 <Image src="/icons/x.png" alt="X (Twitter)" width={24} height={24} />
               </a>
               <a
@@ -82,7 +88,13 @@ export default function Footer() {
               <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="YouTube">
                 <Image src="/icons/youtube.png" alt="YouTube" width={24} height={24} />
               </a>
-              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Threads">
+              <a
+                href="https://www.threads.com/@laxventures"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="Threads"
+              >
                 <Image src="/icons/threads.png" alt="Threads" width={24} height={24} />
               </a>
             </div>
