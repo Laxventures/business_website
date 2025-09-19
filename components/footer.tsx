@@ -67,7 +67,13 @@ export default function Footer() {
               >
                 <Image src="/icons/instagram.png" alt="Instagram" width={24} height={24} />
               </a>
-              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Whatsapp">
+              <a
+                href="https://wa.me/919448643011?text=Hi%20LaxVentures!%20%F0%9F%8C%8D%0A%0AI'm%20interested%20in%20planning%20a%20custom%20travel%20itinerary.%20Could%20you%20help%20me%20with%3A%0A%0A%E2%9C%88%EF%B8%8F%20Destination%20recommendations%0A%F0%9F%8F%A8%20Accommodation%20options%0A%F0%9F%97%93%EF%B8%8F%20Activity%20planning%0A%F0%9F%9A%97%20Transportation%20arrangements%0A%0ALooking%20forward%20to%20creating%20amazing%20travel%20memories%20with%20your%20expertise!%20%F0%9F%8C%9F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="Whatsapp"
+              >
                 <Image src="/icons/whatsapp.png" alt="Whatsapp" width={24} height={24} />
               </a>
               <a
