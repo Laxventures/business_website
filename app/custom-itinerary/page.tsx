@@ -240,35 +240,39 @@ export default function CustomItinerary() {
                   <Label htmlFor="startDate" className="text-base font-medium text-slate-900 mb-2 block">
                     Start Date
                   </Label>
-                  <Input
-                    id="startDate"
-                    type="date"
-                    value={formData.startDate}
-                    onChange={(e) => {
-                      setFormData({ ...formData, startDate: e.target.value })
-                      if (formData.endDate && new Date(formData.endDate) <= new Date(e.target.value)) {
-                        setFormData((prev) => ({ ...prev, startDate: e.target.value, endDate: "" }))
-                      }
-                    }}
-                    className="h-12 text-base"
-                    min={new Date().toISOString().split("T")[0]} // Prevent past dates
-                    required
-                  />
+                  <div className="relative">
+                    <Input
+                      id="startDate"
+                      type="date"
+                      value={formData.startDate}
+                      onChange={(e) => {
+                        setFormData({ ...formData, startDate: e.target.value })
+                        if (formData.endDate && new Date(formData.endDate) <= new Date(e.target.value)) {
+                          setFormData((prev) => ({ ...prev, startDate: e.target.value, endDate: "" }))
+                        }
+                      }}
+                      className="h-12 text-base pr-4"
+                      min={new Date().toISOString().split("T")[0]} // Prevent past dates
+                      required
+                    />
+                  </div>
                 </div>
                 <div>
                   <Label htmlFor="endDate" className="text-base font-medium text-slate-900 mb-2 block">
                     End Date
                   </Label>
-                  <Input
-                    id="endDate"
-                    type="date"
-                    value={formData.endDate}
-                    onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
-                    className="h-12 text-base"
-                    min={getMinEndDate()}
-                    disabled={!formData.startDate} // Disable until start date is selected
-                    required
-                  />
+                  <div className="relative">
+                    <Input
+                      id="endDate"
+                      type="date"
+                      value={formData.endDate}
+                      onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
+                      className="h-12 text-base pr-4"
+                      min={getMinEndDate()}
+                      disabled={!formData.startDate} // Disable until start date is selected
+                      required
+                    />
+                  </div>
                 </div>
               </div>
 
