@@ -1,0 +1,127 @@
+import Link from "next/link"
+import Image from "next/image"
+import { Mail, Phone } from "lucide-react"
+
+export default function Footer() {
+  return (
+    <footer className="bg-slate-900 text-white py-12 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div className="flex items-center mb-4">
+              <Image
+                src="/laxventures-logo-lv.png"
+                alt="LaxVentures Logo"
+                width={75}
+                height={75}
+                className="rounded-lg"
+              />
+              <h3 className="text-xl font-semibold">LaxVentures</h3>
+            </div>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-orange-400" />
+                <a href="mailto:hello@laxventures.in" className="hover:text-orange-300 transition-colors">
+                  hello@laxventures.in
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-orange-400" />
+                <a href="tel:+919448643011" className="hover:text-orange-300 transition-colors">
+                  +91 94486 43011
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Resources</h3>
+            <div className="space-y-2">
+              <Link href="/itineraries" className="block hover:text-orange-300 transition-colors">
+                Destinations
+              </Link>
+              {/* <Link href="/blog" className="block hover:text-orange-300 transition-colors">
+                Travel Blogs
+              </Link> */}
+              <Link href="/privacy-policy" className="block hover:text-orange-300 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms-conditions" className="block hover:text-orange-300 transition-colors">
+                Terms & Conditions
+              </Link>
+              <Link href="/cancellation-refund" className="block hover:text-orange-300 transition-colors">
+                Cancellation & Refund Policy
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
+            <div className="flex gap-4">
+              <a
+                href="https://www.instagram.com/laxventures?igsh=bDV4YTlzMnJzdW00&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="Instagram"
+              >
+                <Image src="/icons/instagram.png" alt="Instagram" width={24} height={24} />
+              </a>
+              <a
+                href="https://wa.me/919448643011?text=Hi%20LaxVentures!%20%F0%9F%8C%8D%0A%0AI'm%20interested%20in%20planning%20a%20custom%20travel%20itinerary.%20Could%20you%20help%20me%20with%3A%0A%0A%E2%9C%88%EF%B8%8F%20Destination%20recommendations%0A%F0%9F%8F%A8%20Accommodation%20options%0A%F0%9F%97%93%EF%B8%8F%20Activity%20planning%0A%F0%9F%9A%97%20Transportation%20arrangements%0A%0ALooking%20forward%20to%20creating%20amazing%20travel%20memories%20with%20your%20expertise!%20%F0%9F%8C%9F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="Whatsapp"
+              >
+                <Image src="/icons/whatsapp.png" alt="Whatsapp" width={24} height={24} />
+              </a>
+              <a
+                href="https://x.com/laxventures?s=21"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="X (Twitter)"
+              >
+                <Image src="/icons/x.png" alt="X (Twitter)" width={24} height={24} />
+              </a>
+              <a
+                href="https://www.facebook.com/share/19SmSTeJZ5/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="Facebook"
+              >
+                <Image src="/icons/facebook.png" alt="Facebook" width={24} height={24} />
+              </a>
+              {/* <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="YouTube">
+                <Image src="/icons/youtube.png" alt="YouTube" width={24} height={24} />
+              </a> */}
+              <a
+                href="https://www.threads.com/@laxventures"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-6 h-6 hover:text-orange-300 transition-colors"
+                aria-label="Threads"
+              >
+                <Image src="/icons/threads.png" alt="Threads" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <div className="text-right">
+              <p className="mb-2">© 2025 LaxVentures.</p>
+              <p className="mb-4">All rights reserved.</p>
+              <p className="text-sm">GSTIN: 33ASNPL7535J1ZC</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-slate-800 pt-4 text-center">
+          <p>© 2025 LaxVentures. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  )
+}
