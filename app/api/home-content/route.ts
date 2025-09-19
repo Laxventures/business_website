@@ -23,14 +23,9 @@ const fallbackContent = {
 
 export async function GET() {
   try {
-    if (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY) {
-      const { getHomeContent } = await import("@/lib/getHomeContent")
-      const content = await getHomeContent()
-      return NextResponse.json(content || fallbackContent)
-    } else {
-      console.log("AWS credentials not found, using fallback content")
-      return NextResponse.json(fallbackContent)
-    }
+    const { getHomeContent } = await import("@/lib/getHomeContent")
+    const content = await getHomeContent()
+    return NextResponse.json(content || fallbackContent)
   } catch (error) {
     console.error("Error fetching home content:", error)
     return NextResponse.json(fallbackContent)
