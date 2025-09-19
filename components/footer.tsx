@@ -67,6 +67,9 @@ export default function Footer() {
               >
                 <Image src="/icons/instagram.png" alt="Instagram" width={24} height={24} />
               </a>
+              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="Whatsapp">
+                <Image src="/icons/whatsapp.png" alt="Whatsapp" width={24} height={24} />
+              </a>
               <a
                 href="https://x.com/laxventures?s=21"
                 target="_blank"
@@ -85,9 +88,9 @@ export default function Footer() {
               >
                 <Image src="/icons/facebook.png" alt="Facebook" width={24} height={24} />
               </a>
-              <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="YouTube">
+              {/* <a href="#" className="w-6 h-6 hover:text-orange-300 transition-colors" aria-label="YouTube">
                 <Image src="/icons/youtube.png" alt="YouTube" width={24} height={24} />
-              </a>
+              </a> */}
               <a
                 href="https://www.threads.com/@laxventures"
                 target="_blank"
