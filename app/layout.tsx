@@ -8,9 +8,8 @@ import Footer from "@/components/footer"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "LaxVentures Business Website",
-  description: "Business website built with Next.js",
-  generator: "v0.app",
+  title: "LaxVentures | Travel Without Limits",
+  description: "Plan smarter, travel better. LaxVentures creates personalized itineraries with expert tips, local insights, and seamless bookings—your adventure, your way.",
   icons: {
     icon: [
       { url: "/favicon.ico" },
