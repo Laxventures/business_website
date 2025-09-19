@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button"
-import { MapPin, Plane, Camera, Heart, ArrowRight } from "lucide-react"
+import { MapPin, Plane, Camera, Heart } from "lucide-react"
 
 interface ComingSoonProps {
   cityName: string
@@ -21,10 +20,10 @@ export default function ComingSoon({ cityName }: ComingSoonProps) {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/--encodeuricomponent--beautiful-scenic-view-of---f.jpg')`,
+          backgroundImage: `url('/dark-travel-background.jpg')`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/80 via-cyan-700/70 to-slate-900/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/80 via-slate-900/70 to-blue-900/60"></div>
       </div>
 
       {/* Content */}
