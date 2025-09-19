@@ -8,12 +8,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Spinner } from "@/components/ui/spinner"
 import { Calendar, Settings } from "lucide-react"
 import { useState as useReactState } from "react"
 
 export default function CustomItinerary() {
   const [homeContent, setHomeContent] = useState<any>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +38,8 @@ export default function CustomItinerary() {
           ],
           typeOfTravellerTitle: "What Type of Traveller Are You?",
         })
+      } finally {
+        setIsLoading(false)
       }
     }
     fetchData()
@@ -54,21 +58,36 @@ export default function CustomItinerary() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const phoneRegex = /^[+]?[1-9][\d]{0,15}$/
 
+    // Check if end date is after start date
+    const startDate = new Date(formData.startDate)
+    const endDate = new Date(formData.endDate)
+    const isDateValid = formData.startDate && formData.endDate && endDate > startDate
+
     return (
       formData.destination.trim() !== "" &&
       formData.startDate !== "" &&
       formData.endDate !== "" &&
       formData.travalerTypes !== "" &&
       emailRegex.test(formData.email) &&
-      phoneRegex.test(formData.phone)
+      phoneRegex.test(formData.phone) &&
+      isDateValid
     )
+  }
+
+  const getMinEndDate = () => {
+    if (formData.startDate) {
+      const startDate = new Date(formData.startDate)
+      startDate.setDate(startDate.getDate() + 1) // Next day after start date
+      return startDate.toISOString().split("T")[0]
+    }
+    return ""
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!isFormValid()) {
-      alert("Please fill in all fields with valid information.")
+      alert("Please fill in all fields with valid information and ensure the end date is after the start date.")
       return
     }
 
@@ -103,6 +122,17 @@ export default function CustomItinerary() {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <Spinner size="lg" className="mx-auto mb-4" />
+          <p className="text-lg text-gray-600">Loading custom itinerary page...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -210,27 +240,39 @@ export default function CustomItinerary() {
                   <Label htmlFor="startDate" className="text-base font-medium text-slate-900 mb-2 block">
                     Start Date
                   </Label>
-                  <Input
-                    id="startDate"
-                    type="date"
-                    value={formData.startDate}
-                    onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-                    className="h-12 text-base"
-                    required
-                  />
+                  <div className="relative">
+                    <Input
+                      id="startDate"
+                      type="date"
+                      value={formData.startDate}
+                      onChange={(e) => {
+                        setFormData({ ...formData, startDate: e.target.value })
+                        if (formData.endDate && new Date(formData.endDate) <= new Date(e.target.value)) {
+                          setFormData((prev) => ({ ...prev, startDate: e.target.value, endDate: "" }))
+                        }
+                      }}
+                      className="h-12 text-base pr-4"
+                      min={new Date().toISOString().split("T")[0]} // Prevent past dates
+                      required
+                    />
+                  </div>
                 </div>
                 <div>
                   <Label htmlFor="endDate" className="text-base font-medium text-slate-900 mb-2 block">
                     End Date
                   </Label>
-                  <Input
-                    id="endDate"
-                    type="date"
-                    value={formData.endDate}
-                    onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
-                    className="h-12 text-base"
-                    required
-                  />
+                  <div className="relative">
+                    <Input
+                      id="endDate"
+                      type="date"
+                      value={formData.endDate}
+                      onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
+                      className="h-12 text-base pr-4"
+                      min={getMinEndDate()}
+                      disabled={!formData.startDate} // Disable until start date is selected
+                      required
+                    />
+                  </div>
                 </div>
               </div>
 

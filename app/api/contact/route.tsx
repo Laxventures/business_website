@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
 
     const params = {
       Destination: {
-        ToAddresses: [process.env.NEXT_PUBLIC_SES_TO_EMAIL!],
+        ToAddresses: [process.env.NEXT_PUBLIC_SES_CONTACT_EMAIL!],
       },
       Message: {
         Body: {
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
           Data: `New Contact Form Submission from ${name}`,
         },
       },
-      Source: process.env.NEXT_PUBLIC_SES_FROM_EMAIL!,
+      Source: process.env.NEXT_PUBLIC_SES_CONTACT_EMAIL!,
       ReplyToAddresses: [email],
     };
 
