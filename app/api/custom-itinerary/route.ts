@@ -29,9 +29,9 @@ export async function POST(request: NextRequest) {
 
     // Prepare SES command
     const command = new SendEmailCommand({
-      Source: "hello@laxventures.in", // must be a verified SES identity
+      Source: process.env.NEXT_PUBLIC_SES_BOOKING_EMAIL!, // must be a verified SES identity
       Destination: {
-        ToAddresses: ["hello@laxventures.in"], // you can add more here
+        ToAddresses: [process.env.NEXT_PUBLIC_SES_BOOKING_EMAIL!], // you can add more here
       },
       Message: {
         Subject: { Data: "New Custom Itinerary Request" },
