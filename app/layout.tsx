@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "LaxVentures Business Website",
   description: "Business website built with Next.js",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({

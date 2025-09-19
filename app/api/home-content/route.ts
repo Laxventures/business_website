@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { getHomeContent } from "@/lib/getHomeContent"
+// import { getHomeContent } from "@/lib/getHomeContent"
 
 const fallbackContent = {
   heroTitle: "Discover Your Next Adventure",
@@ -24,8 +24,9 @@ const fallbackContent = {
 
 export async function GET() {
   try {
-    const content = await getHomeContent()
-    return NextResponse.json(content || fallbackContent)
+    // const content = await getHomeContent()
+    // return NextResponse.json(content || fallbackContent)
+    return NextResponse.json(fallbackContent)
   } catch (error) {
     console.error("Error fetching home content:", error)
     return NextResponse.json(fallbackContent)
