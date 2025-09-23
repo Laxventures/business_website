@@ -1,24 +1,29 @@
 // lib/getHomeContent.ts
-import { GetCommand } from "@aws-sdk/lib-dynamodb";
-import { docClient } from "./dynamo";
+import { GetCommand } from "@aws-sdk/lib-dynamodb"
+import { docClient } from "./dynamo"
 
-let cachedHomeContent: any = null;
+let cachedHomeContent: any = null
 
 export async function getHomeContent() {
-  if (cachedHomeContent) return cachedHomeContent;
+  if (cachedHomeContent) return cachedHomeContent
 
-  const tableName = process.env.NEXT_PUBLIC_DDB_HOME_CONTENT_TABLE;
+  const tableName = process.env.NEXT_PUBLIC_DDB_HOME_CONTENT_TABLE
   if (!tableName) {
-    throw new Error("NEXT_PUBLIC_DDB_HOME_CONTENT_TABLE is not defined in environment variables");
+    throw new Error("NEXT_PUBLIC_DDB_HOME_CONTENT_TABLE is not defined in environment variables")
   }
 
 
-  const command = new GetCommand({
-    TableName: tableName,
-    Key: { id: "home" },
-  });
+  try {
+    const command = new GetCommand({
+      TableName: tableName,
+      Key: { id: "home" },
+    })
 
-  const result = await docClient.send(command);
-  cachedHomeContent = result.Item;
-  return cachedHomeContent;
+    const result = await docClient.send(command)
+    cachedHomeContent = result.Item
+    return cachedHomeContent
+  } catch (error) {
+    console.error("[v0] Error fetching home content:", error)
+    return null
+  }
 }
