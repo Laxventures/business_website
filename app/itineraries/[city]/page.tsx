@@ -1,3 +1,4 @@
+import type React from "react"
 import {
   ChevronDown,
   MapPin,
@@ -12,7 +13,8 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ComingSoon from "@/components/coming-soon"
-import { getItinerary } from "@/lib/itineraries";
+import { getItinerary } from "@/lib/itineraries"
+import InteractiveMap from "@/components/interactive-map"
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   plane: Plane,
@@ -22,11 +24,11 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   train: Train,
   shoppingBag: ShoppingBag,
   alertTriangle: AlertTriangle,
-};
+}
 
 export default async function CityItineraryPage({ params }: { params: { city: string } }) {
-  const citySlug = params.city;
-  const cityData = await getItinerary(citySlug);
+  const citySlug = params.city
+  const cityData = await getItinerary(citySlug)
 
   if (!cityData) {
     return <ComingSoon cityName={params.city} />
@@ -78,8 +80,8 @@ export default async function CityItineraryPage({ params }: { params: { city: st
                           {day.activities.map((activity, actIndex) => (
                             <div key={actIndex} className="flex items-center gap-3">
                               {(() => {
-                                const Icon = ICON_MAP[activity.icon] ?? MapPin;
-                                return <Icon className="w-5 h-5 text-slate-600" />;
+                                const Icon = ICON_MAP[activity.icon] ?? MapPin
+                                return <Icon className="w-5 h-5 text-slate-600" />
                               })()}
                               <div>
                                 <span className="font-medium text-slate-900">{activity.title}</span>
@@ -160,12 +162,7 @@ export default async function CityItineraryPage({ params }: { params: { city: st
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="aspect-square bg-gray-200 rounded-lg flex items-center justify-center">
-                <MapPin className="w-12 h-12 text-gray-400" />
-              </div>
-            </div>
+            <InteractiveMap city={citySlug} />
 
             {/* Packing Tips */}
             <div className="bg-white rounded-lg shadow-md p-6">
