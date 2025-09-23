@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button"
 import ComingSoon from "@/components/coming-soon"
 import { getItinerary } from "@/lib/itineraries"
+import { getCityCoordinates } from "@/lib/cityCoordinates"
 import InteractiveMap from "@/components/interactive-map"
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -26,13 +27,15 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   alertTriangle: AlertTriangle,
 }
 
-export default async function CityItineraryPage({ params }: { params: { city: string } }) {
-  const citySlug = params.city
+export default async function CityItineraryPage({ params }: { params: Promise<{ city: string }> }) {
+  const { city: citySlug } = await params
   const cityData = await getItinerary(citySlug)
 
   if (!cityData) {
-    return <ComingSoon cityName={params.city} />
+    return <ComingSoon cityName={citySlug} />
   }
+
+  const coords = await getCityCoordinates(citySlug)
 
   return (
     <div className="min-h-screen">
@@ -162,7 +165,10 @@ export default async function CityItineraryPage({ params }: { params: { city: st
               </div>
             </div>
 
-            <InteractiveMap city={citySlug} />
+            <InteractiveMap
+              city={citySlug}
+              coords={coords ? [coords.latitude, coords.longitude] : null}
+            />
 
             {/* Packing Tips */}
             <div className="bg-white rounded-lg shadow-md p-6">
