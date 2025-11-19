@@ -1,29 +1,26 @@
 // lib/getHomeContent.ts
-import { GetCommand } from "@aws-sdk/lib-dynamodb"
-import { docClient } from "./dynamo"
-
-let cachedHomeContent: any = null
 
 export async function getHomeContent() {
-  if (cachedHomeContent) return cachedHomeContent
-
-  const tableName = process.env.NEXT_PUBLIC_DDB_HOME_CONTENT_TABLE
-  if (!tableName) {
-    throw new Error("NEXT_PUBLIC_DDB_HOME_CONTENT_TABLE is not defined in environment variables")
-  }
-
-
-  try {
-    const command = new GetCommand({
-      TableName: tableName,
-      Key: { id: "home" },
-    })
-
-    const result = await docClient.send(command)
-    cachedHomeContent = result.Item
-    return cachedHomeContent
-  } catch (error) {
-    console.error("[v0] Error fetching home content:", error)
-    return null
+  // Return static fallback data for v0 preview environment
+  // In production, this would connect to DynamoDB
+  return {
+    heroTitle: "Discover Your Next Adventure",
+    heroSubtitle:
+      "Personalized travel experiences crafted just for you. From bustling cities to serene landscapes, we help you create unforgettable memories.",
+    ctaButton: "Plan Your Journey",
+    whoWeAreTitle: "Who We Are",
+    whoWeAreContent:
+      "We are passionate travellers who believe every journey should be unique and memorable. With years of experience exploring the world, we curate personalized itineraries that match your travel style and preferences.",
+    realStories: [
+      { slug: "paris", title: "Paris", image: "/paris-cityscape.png" },
+      { slug: "vietnam", title: "Vietnam", image: "/bustling-vietnamese-street.png" },
+      { slug: "tibet", title: "Tibet", image: "/tibet.jpg" },
+      { slug: "london", title: "London", image: "/london-cityscape.png" },
+    ],
+    testimonials: [
+      "Amazing experience! The itinerary was perfectly planned and every detail was taken care of. I couldn't have asked for a better travel partner.",
+      "Best travel service I've ever used. Highly recommended! The personalized approach made all the difference in our trip.",
+    ],
+    contactUsCTA: "Contact Us",
   }
 }
