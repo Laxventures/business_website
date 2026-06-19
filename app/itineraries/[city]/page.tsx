@@ -95,7 +95,7 @@ export default async function CityItineraryPage({ params }: { params: Promise<{ 
                         </div>
 
                         {/* Travel Tip */}
-                        <div className="bg-blue-50 p-4 rounded-lg">
+                        <div className="bg-orange-50 p-4 rounded-lg">
                           <h4 className="font-semibold text-slate-900 mb-2">Travel Tip</h4>
                           <p className="text-gray-700">{day.tip}</p>
                         </div>

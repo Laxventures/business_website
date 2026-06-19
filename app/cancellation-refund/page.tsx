@@ -2,18 +2,8 @@ export default function CancellationRefundPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section
-        className="relative h-64 flex items-center justify-center text-white"
-        style={{
-          backgroundImage: "url(/hot-air-balloon.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-slate-900/60"></div>
-        <div className="relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Cancellation & Refund Policy</h1>
-        </div>
+      <section className="h-64 flex items-center justify-center text-white bg-slate-900">
+        <h1 className="text-4xl md:text-5xl font-bold">Cancellation & Refund Policy</h1>
       </section>
 
       {/* Content Section */}
