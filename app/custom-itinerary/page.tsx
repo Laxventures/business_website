@@ -139,12 +139,7 @@ export default function CustomItinerary() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-slate-800">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
-          style={{
-            backgroundImage: `url('/hot-air-balloon.png')`,
-          }}
-        />
+        <Image src="/hot-air-balloon.png" alt="" fill priority className="object-cover opacity-70" />
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-20 text-center">

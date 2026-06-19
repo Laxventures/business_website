@@ -1,4 +1,5 @@
 import type React from "react"
+import type { Metadata } from "next"
 import {
   ChevronDown,
   MapPin,
@@ -27,6 +28,31 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   alertTriangle: AlertTriangle,
 }
 
+export async function generateMetadata({
+  params,
+}: { params: Promise<{ city: string }> }): Promise<Metadata> {
+  const { city: citySlug } = await params
+  const cityData = await getItinerary(citySlug)
+
+  if (!cityData) {
+    return { title: "Itinerary Coming Soon | LaxVentures" }
+  }
+
+  const title = `${cityData.title} Itinerary | LaxVentures`
+  const description = `${cityData.subtitle} — a ${cityData.days.length}-day custom ${cityData.title} itinerary with hotel, food, and transport recommendations from LaxVentures.`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: cityData.heroImage }],
+      type: "article",
+    },
+  }
+}
+
 export default async function CityItineraryPage({ params }: { params: Promise<{ city: string }> }) {
   const { city: citySlug } = await params
   const cityData = await getItinerary(citySlug)
@@ -37,8 +63,25 @@ export default async function CityItineraryPage({ params }: { params: Promise<{ 
 
   const coords = await getCityCoordinates(citySlug)
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: cityData.title,
+    description: cityData.subtitle,
+    image: cityData.heroImage,
+    itinerary: cityData.days.map((day, index) => ({
+      "@type": "TouristAttraction",
+      position: index + 1,
+      name: day.title,
+    })),
+  }
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative h-80 bg-slate-900 flex items-center justify-center">
         <div
@@ -54,7 +97,7 @@ export default async function CityItineraryPage({ params }: { params: Promise<{ 
           <p className="text-2xl md:text-3xl mb-4 text-orange-300">{cityData.subtitle}</p>
           <div className="flex flex-wrap justify-center gap-3 mb-4">
             {cityData.hashtags.map((tag, index) => (
-              <span key={index} className="text-lg text-blue-200">
+              <span key={index} className="text-lg text-orange-200">
                 {tag}
               </span>
             ))}

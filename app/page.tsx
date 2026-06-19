@@ -54,12 +54,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <section className="relative min-h-[80vh] flex items-center justify-center bg-slate-800">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
-          style={{
-            backgroundImage: `url('/hot-air-balloon.png')`,
-          }}
-        />
+        <Image src="/hot-air-balloon.png" alt="" fill priority className="object-cover opacity-70" />
         <div className="absolute inset-0 bg-black/40" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center">

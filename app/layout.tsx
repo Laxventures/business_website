@@ -18,7 +18,17 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
-    generator: 'v0.app'
+  openGraph: {
+    title: "LaxVentures | Travel Without Limits",
+    description: "Plan smarter, travel better. LaxVentures creates personalized itineraries with expert tips, local insights, and seamless bookings—your adventure, your way.",
+    siteName: "LaxVentures",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LaxVentures | Travel Without Limits",
+    description: "Plan smarter, travel better. LaxVentures creates personalized itineraries with expert tips, local insights, and seamless bookings—your adventure, your way.",
+  },
 }
 
 export default function RootLayout({
