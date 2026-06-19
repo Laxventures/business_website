@@ -1,5 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Travel Articles & Tips | LaxVentures",
+  description:
+    "Travel tips, budget guides, and destination inspiration from LaxVentures — domestic and international travel advice for your next trip.",
+}
 
 export default function BlogPage() {
   const blogPosts = [
@@ -36,15 +43,9 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section
-        className="relative h-96 flex items-center justify-center text-white"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/hot-air-balloon.png')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+      <section className="relative h-96 flex items-center justify-center text-white">
+        <Image src="/hot-air-balloon.png" alt="" fill priority className="object-cover -z-10" />
+        <div className="absolute inset-0 bg-black/60 -z-10" />
         <div className="text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg text-shadow-lg">Travel Articles</h1>
         </div>

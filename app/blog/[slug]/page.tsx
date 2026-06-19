@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import type { Metadata } from "next"
 
 // Sample blog data - in a real app, this would come from a CMS or database
 const blogPosts = {
@@ -60,21 +61,56 @@ const recentArticles = [
   { title: "Exploring Ancient Ruins: What to Know", slug: "ancient-ruins-guide" },
 ]
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug as keyof typeof blogPosts]
+export async function generateMetadata({
+  params,
+}: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = blogPosts[slug as keyof typeof blogPosts]
+
+  if (!post) {
+    return { title: "Article Not Found | LaxVentures" }
+  }
+
+  const title = `${post.title} | LaxVentures`
+  return {
+    title,
+    openGraph: {
+      title,
+      images: [{ url: post.image }],
+      type: "article",
+    },
+  }
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = blogPosts[slug as keyof typeof blogPosts]
 
   if (!post) {
     return <div>Blog post not found</div>
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    datePublished: post.date,
+    image: post.image,
+    publisher: { "@type": "Organization", name: "LaxVentures" },
+  }
+
   return (
     <main>
-      <section
-        className="relative min-h-[60vh] flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/hot-air-balloon.png')`,
-        }}
-      >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <section className="relative min-h-[60vh] flex items-center justify-center">
+        <Image
+          src="/hot-air-balloon.png"
+          alt=""
+          fill
+          priority
+          className="object-cover -z-10"
+        />
+        <div className="absolute inset-0 bg-black/40 -z-10" />
         <div className="text-center text-white px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">{post.title}</h1>
           <p className="text-xl text-gray-200 drop-shadow-lg">{post.date}</p>

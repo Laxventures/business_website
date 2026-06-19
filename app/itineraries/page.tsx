@@ -1,6 +1,13 @@
 // import { ScanCommand } from "@aws-sdk/lib-dynamodb";
 import Link from "next/link";
+import Image from "next/image";
+import type { Metadata } from "next";
 // import { ddb } from "@/lib/dynamo";
+
+export const metadata: Metadata = {
+  title: "Travel Itineraries | LaxVentures",
+  description: "Browse curated, custom-built travel itineraries for top destinations around the world from LaxVentures.",
+}
 
 export default function ItinerariesPage() {
   const itineraries = [
@@ -60,14 +67,8 @@ export default function ItinerariesPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-96 bg-slate-800 flex items-center justify-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/hot-air-balloon.png')`,
-          }}
-        >
-          <div className="absolute inset-0 bg-slate-900/60"></div>
-        </div>
+        <Image src="/hot-air-balloon.png" alt="" fill priority className="object-cover -z-10" />
+        <div className="absolute inset-0 bg-slate-900/60 -z-10"></div>
         <div className="relative z-10 text-center text-white px-6">
           <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg text-shadow-lg">My Travel Itineraries</h1>
           <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto">
@@ -86,10 +87,11 @@ export default function ItinerariesPage() {
                 {/* Added Link wrapper for navigation */}
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                   <div className="aspect-video relative overflow-hidden">
-                    <img
+                    <Image
                       src={`${itinerary.image}?query=${encodeURIComponent(itinerary.imageQuery)}`}
                       alt={itinerary.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-6">
